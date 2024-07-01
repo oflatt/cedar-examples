@@ -42,6 +42,26 @@ validate() {
     fi
 }
 
+
+# Call this function to assert that policies in the directory `$1/$2` validate
+# with the schema `$1/$3`. Set `any_failed` env var to `1` if the policy does
+# not validate.
+entity_manifest() {
+    local folder=$1
+    local policies=$2
+    local schema=$3
+    local links=$4
+    local manifest=$5
+    echo " Running entity manifest generation on ${policies}"
+    if [ -z "$links" ]
+    then
+        cedar entity-manifest --policies "$folder/$policies" --schema "$folder/$schema" --schema-format human > $folder/$manifest
+    else
+       cedar entity-manifest --policies "$folder/$policies" --schema "$folder/$schema" --schema-format human -k "$folder/$links" > $folder/$manifest
+    fi
+}
+
+
 # Call this function to assert that authorization requests defined in
 # `$1/ALLOW/*.json` and `$1/DENY/*.json` evaluate with expected authorization
 # result given policies in directory `$1/$2` and entities in `$1/$3`.
