@@ -7,14 +7,14 @@ echo -e "\nTesting github_example..."
 validate "github_example" "policies.cedar" "policies.cedarschema"
 authorize "github_example" "policies.cedar" "entities.json"
 format "github_example" "policies.cedar"
-entity_manifest "github_example" "policies.cedar" "policies.cedarschema" "" "entity_manifest.json"
+entity_manifest "github_example" "policies.cedar" "policies.cedarschema" "" "manifest.entitymanifest"
 
 # Document cloud
 echo -e "\nTesting document_cloud..."
 validate "document_cloud" "policies.cedar" "policies.cedarschema"
 authorize "document_cloud" "policies.cedar" "entities.json"
 format "document_cloud" "policies.cedar"
-entity_manifest "document_cloud" "policies.cedar" "policies.cedarschema" "" "entity_manifest.json"
+entity_manifest "document_cloud" "policies.cedar" "policies.cedarschema" "" "manifest.entitymanifest"
 
 # Tags & roles
 echo -e "\nTesting Tags & Roles..."
